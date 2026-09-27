@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#e21833">
+<title>BMGT758Q — Foundations of Consulting</title>
+<style>
+  :root{--cream:#f7f1e5;--paper:#fffdf8;--ink:#171717;--muted:#6b6258;--red:#e21833;--red-dark:#a70f24;--gold:#ffd200;--bronze:#ad7231;--line:#ded3c3;--shadow:0 12px 32px rgba(56,38,18,.08)}
+  *{box-sizing:border-box;margin:0;padding:0} html{scroll-behavior:smooth}
+  body{font-family:Georgia,'Times New Roman',serif;background:var(--cream);color:var(--ink);font-size:16px;line-height:1.65}
+  button,input{font:inherit} a{color:var(--red-dark);text-underline-offset:3px} a:hover{color:var(--red)}
+  .skip{position:absolute;left:-9999px;top:auto}.skip:focus{left:1rem;top:1rem;background:#fff;padding:.65rem 1rem;z-index:1000;border:2px solid var(--red)}
+  .hero{position:relative;overflow:hidden;background:#111;color:#fff;padding:3.5rem 1.5rem 2rem;border-bottom:8px solid var(--gold)}
+  .hero:before{content:"";position:absolute;inset:0;background:linear-gradient(118deg,rgba(226,24,51,.97) 0 25%,rgba(17,17,17,.94) 25% 78%,rgba(173,114,49,.92) 78%);opacity:.96}
+  .hero:after{content:"";position:absolute;width:260px;height:260px;border:34px solid rgba(255,210,0,.2);transform:rotate(45deg);right:-110px;top:-130px}
+  .hero-inner{position:relative;z-index:1;max-width:1080px;margin:auto}
+  .eyebrow{font:700 12px/1.3 Arial,sans-serif;letter-spacing:2.2px;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+  h1{font-size:clamp(2.15rem,5vw,4.35rem);line-height:1.02;font-weight:500;max-width:900px;letter-spacing:-.035em}
+  .subtitle{font:500 16px/1.5 Arial,sans-serif;margin-top:.75rem;color:#f3e9da}
+  .hero-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.18);margin:2rem 0 1.75rem;border:1px solid rgba(255,255,255,.18)}
+  .hero-stat{background:rgba(0,0,0,.22);padding:.9rem 1rem;font:14px/1.4 Arial,sans-serif}.hero-stat span{display:block;color:var(--gold);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;font-weight:800;margin-bottom:3px}.hero-stat a{color:white}
+  .nav{display:flex;flex-wrap:wrap;gap:.5rem}.nav button{border:1px solid rgba(255,255,255,.45);background:transparent;color:#fff;border-radius:999px;padding:.55rem 1rem;cursor:pointer;font:700 13px Arial,sans-serif;transition:.18s}.nav button:hover,.nav button.active{background:var(--gold);color:#111;border-color:var(--gold)}
+  .shell{max-width:1080px;margin:0 auto;padding:2rem 1.25rem 4rem}.section{display:none;animation:fade .18s ease}.section.active{display:block}@keyframes fade{from{opacity:.4;transform:translateY(3px)}to{opacity:1;transform:none}}
+  .section-label{font:800 11px Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;color:var(--red-dark);margin:2rem 0 .8rem;padding-bottom:.55rem;border-bottom:2px solid var(--gold)}.section-label:first-child{margin-top:0}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:1.4rem 1.55rem;margin-bottom:1rem;box-shadow:0 4px 16px rgba(56,38,18,.035)}
+  .card h2,.card h3,.resource h3{font-family:Arial,sans-serif;color:#111;line-height:1.25}.card h3{font-size:1rem;margin-bottom:.55rem}.card p+p{margin-top:.8rem}.card ul,.card ol{margin:.55rem 0 0 1.25rem}.card li{margin:.35rem 0}
+  .objective-grid,.resource-grid,.faculty-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.objective{border-left:5px solid var(--red);position:relative;padding-left:1.25rem}.objective:nth-child(even){border-color:var(--bronze)}
+  .callout{background:#191919;color:#fff;border-radius:14px;padding:1.25rem 1.5rem;margin-bottom:1rem;border-left:7px solid var(--gold)}.callout strong{color:var(--gold)}
+  .accordion{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:.75rem;overflow:hidden;box-shadow:0 4px 14px rgba(56,38,18,.035)}
+  .accordion-head{width:100%;display:flex;align-items:center;justify-content:space-between;text-align:left;padding:1rem 1.25rem;border:0;background:#fffaf0;cursor:pointer;color:#111;font:800 13px/1.4 Arial,sans-serif;letter-spacing:.7px;text-transform:uppercase}.accordion-head:hover{background:#fff5df}.accordion-head .arrow{color:var(--red);transition:.2s}.accordion.open .arrow{transform:rotate(180deg)}
+  .accordion-body{display:none}.accordion.open .accordion-body{display:block}.session{display:grid;grid-template-columns:130px 1fr;gap:1rem;padding:1rem 1.25rem;border-top:1px solid var(--line)}.date{font:800 12px/1.4 Arial,sans-serif;color:var(--red-dark);text-transform:uppercase;letter-spacing:.6px}.topic{font-size:1.03rem}.session-note{color:var(--muted);font-size:.92rem;margin-top:.4rem}.tag{display:inline-block;background:#f6dfe3;color:#8e0d20;border:1px solid #efc1c9;border-radius:999px;padding:.22rem .6rem;margin:.45rem .25rem 0 0;font:700 11px Arial,sans-serif}.tag.read{background:#fff5c5;color:#614e00;border-color:#ecd668}.tag.exam{background:#efe4d5;color:#70451a;border-color:#d7b487}
+  .team-times{display:grid;grid-template-columns:repeat(3,minmax(100px,1fr));gap:.35rem;margin-top:.65rem}.team-times span{background:#f5efe5;border-radius:7px;padding:.35rem .5rem;font:12px Arial,sans-serif}
+  .grade-layout{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(260px,.55fr);gap:1rem;align-items:start}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-family:Arial,sans-serif;font-size:.9rem}th{text-align:left;font-size:.72rem;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--gold);padding:.65rem .5rem}td{padding:.62rem .5rem;border-bottom:1px solid var(--line)}td.num,th.num{text-align:right}.category td{background:#f5eee2;color:#111;text-transform:uppercase;letter-spacing:.7px;font-size:.72rem;font-weight:800}.total td{font-weight:800;border-top:2px solid #111}.grade-input{width:72px;padding:.35rem;border:1px solid #b9ac9c;border-radius:6px;text-align:right;background:white}
+  .scorebox{position:sticky;top:1rem;background:#151515;color:white;border-radius:14px;padding:1.5rem;text-align:center;border-top:7px solid var(--red);box-shadow:var(--shadow)}.scorebox .letter{font:800 3.2rem Arial,sans-serif;color:var(--gold);line-height:1}.scorebox .pct{font:14px Arial,sans-serif;color:#eee;margin-top:.45rem}.reset{margin-top:1rem;background:transparent;color:#fff;border:1px solid #aaa;border-radius:999px;padding:.45rem .9rem;cursor:pointer;font:700 12px Arial,sans-serif}.reset:hover{border-color:var(--gold);color:var(--gold)}
+  .cutoffs{display:grid;grid-template-columns:repeat(5,1fr);gap:.4rem;margin-top:1rem}.cutoff{background:#fff;border:1px solid var(--line);border-radius:8px;text-align:center;padding:.45rem;font:12px Arial,sans-serif}.cutoff b{display:block;color:var(--red-dark);font-size:14px}
+  .matrix td,.matrix th{text-align:center;min-width:82px}.matrix td:first-child,.matrix th:first-child{text-align:left;min-width:180px}.yes{color:#21733f;font-weight:900;font-size:1.1rem}.no{color:#bdb3a7}.matrix-note{font-size:.85rem;color:var(--muted);margin-top:.75rem}
+  .resource{background:var(--paper);border:1px solid var(--line);border-top:5px solid var(--bronze);border-radius:12px;padding:1.2rem}.resource:nth-child(even){border-top-color:var(--red)}.resource h3{font-size:.95rem;margin-bottom:.45rem}.resource p{font-size:.92rem;color:#403a34}
+  .faculty{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:1.4rem}.faculty h2{font:800 1.15rem Arial,sans-serif;color:var(--red-dark);margin-bottom:.6rem}.faculty p{font-size:.95rem}.fineprint{font-size:.86rem;color:var(--muted)}
+  footer{background:#111;color:#ddd;padding:1.25rem;text-align:center;font:12px Arial,sans-serif;border-top:6px solid var(--red)}
+  @media(max-width:760px){.hero-grid{grid-template-columns:repeat(2,1fr)}.objective-grid,.resource-grid,.faculty-grid,.grade-layout{grid-template-columns:1fr}.session{grid-template-columns:1fr;gap:.25rem}.team-times{grid-template-columns:repeat(2,1fr)}.scorebox{position:static}.cutoffs{grid-template-columns:repeat(3,1fr)}}
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Robert H. Smith School of Business · Fall 2026</div>
+    <h1>Foundations of Consulting</h1>
+    <div class="subtitle">BMGT758Q · Professors Nicole Coomber &amp; Albert Krall</div>
+    <div class="hero-grid">
+      <div class="hero-stat"><span>Course dates</span>October 19–December 9, 2026</div>
+      <div class="hero-stat"><span>Class meetings</span>Monday &amp; Wednesday<br>10:00–11:50 a.m. ET</div>
+      <div class="hero-stat"><span>Classroom</span>VMH 1407</div>
+      <div class="hero-stat"><span>Credits</span>2 credits</div>
+      <div class="hero-stat"><span>Nicole Coomber</span><a href="mailto:ncottre@umd.edu">ncottre@umd.edu</a></div>
+      <div class="hero-stat"><span>Coomber office hours</span>Tuesday, 2–4 p.m.<br>VMH 4518 or <a href="https://umd.zoom.us/j/9358863352?pwd=cTJTeHl1SkFTVE1Wa2hSUDlsRldGQT09">Zoom</a></div>
+      <div class="hero-stat"><span>Albert Krall</span><a href="mailto:albert.krall@gmail.com">albert.krall@gmail.com</a></div>
+      <div class="hero-stat"><span>Krall office hours</span>By appointment</div>
+    </div>
+    <nav class="nav" aria-label="Syllabus sections">
+      <button class="active" data-target="overview">Overview</button><button data-target="schedule">Schedule</button><button data-target="grading">Grading</button><button data-target="policies">Policies</button><button data-target="resources">Resources</button><button data-target="about">Instructors</button>
+    </nav>
+  </div>
+</header>
+<main class="shell" id="main">
+  <section class="section active" id="overview">
+    <div class="section-label">Course description</div>
+    <div class="card"><p>Foundations of Consulting is designed to help students develop the three essential skills for a successful consulting career: <strong>teamwork, analysis, and presentation skills</strong>. Students will develop these skills through class discussion, individual exercises, and applied team exercises with a real client.</p></div>
+    <div class="section-label">Course objectives</div>
+    <div class="objective-grid">
+      <div class="card objective">Work constructively as a team to analyze a business situation and present clear, convincing, and well-supported recommendations.</div>
+      <div class="card objective">Approach problem-solving using a structured methodology.</div>
+      <div class="card objective">Understand the business imperatives of consulting firms and the dynamics of the consulting industry.</div>
+      <div class="card objective">Reflect on your performance in a team and as an individual and make recommendations for future improvement.</div>
+    </div>
+    <div class="callout"><strong>What this course does not cover:</strong> This class will not teach data analytics, strategy, marketing, operations, finance, or every possible consulting framework. Students should build on the core curriculum and proactively seek outside knowledge using tools such as VBIC.</div>
+    <div class="section-label">Course materials</div>
+    <div class="card">
+      <h3>Required</h3>
+      <p>Garrette, B., Phelps, C., &amp; Sibony, O. (2018). <em>Cracked It! How to Solve Big Problems and Sell Solutions Like Top Strategy Consultants.</em> Palgrave Macmillan. ISBN 978-3-319-89374-7. <a href="https://www.amazon.com/Cracked-problems-solutions-strategy-consultants/dp/3319893742">Amazon</a></p>
+      <h3 style="margin-top:1rem">Optional excerpts provided on Canvas</h3>
+      <ul><li>Maister, D., Green, C. H., &amp; Galford, R. M. (2001). <em>The Trusted Advisor.</em></li><li>Minto, B. (1987). <em>The Pyramid Principle: Logic in Writing and Thinking.</em></li></ul>
+    </div>
+  </section>
+
+  <section class="section" id="schedule">
+    <div class="section-label">Course outline &amp; assignments</div>
+    <div class="callout"><strong>Schedule note:</strong> The course runs October 19–December 9, with November 23 and 25 reserved for Thanksgiving break. December 14 is held as an exam-period meeting.</div>
+    <div id="schedule-list"></div>
+  </section>
+
+  <section class="section" id="grading">
+    <div class="section-label">Interactive grade calculator</div>
+    <div class="grade-layout">
+      <div class="card table-wrap"><p class="fineprint" style="margin-bottom:.8rem">Enter points for completed work and leave future assignments blank. Your current standing is calculated only from entered assignments.</p><table><thead><tr><th>Assignment</th><th class="num">Earned</th><th class="num">Possible</th></tr></thead><tbody id="grade-body"></tbody></table></div>
+      <aside class="scorebox"><div class="letter" id="letter">–</div><div class="pct" id="pct">Enter grades to calculate your current standing</div><button class="reset" id="reset">Reset calculator</button></aside>
+    </div>
+    <div class="section-label">Letter-grade cutoffs</div>
+    <div class="cutoffs" id="cutoffs"></div>
+    <div class="section-label">Assignment structure</div>
+    <div class="card table-wrap"><table><tbody><tr class="category"><td colspan="2">Individual assignments</td></tr><tr><td>Avatar Assignment</td><td class="num">5</td></tr><tr><td>In-Class Participation</td><td class="num">5</td></tr><tr><td>Exercise #1</td><td class="num">10</td></tr><tr><td>Exercise #2</td><td class="num">10</td></tr><tr><td>Self-Evaluation</td><td class="num">8</td></tr><tr class="category"><td colspan="2">Team assignments</td></tr><tr><td>Team Presentation #1</td><td class="num">10</td></tr><tr><td>Team Presentation #2</td><td class="num">10</td></tr><tr><td>Team Presentation #3</td><td class="num">25</td></tr><tr><td>Midterm Peer Evaluation</td><td class="num">5</td></tr><tr><td>Final Peer Evaluation</td><td class="num">10</td></tr><tr class="total"><td>Total</td><td class="num">100</td></tr></tbody></table></div>
+  </section>
+
+  <section class="section" id="policies">
+    <div class="section-label">Course policies</div><div id="policy-list"></div>
+    <div class="section-label">Academic integrity &amp; collaboration</div>
+    <div class="card"><p>The University’s <a href="https://president.umd.edu/sites/president.umd.edu/files/files/documents/policies/III-100A.pdf">Code of Academic Integrity</a> applies to all work. Include the honor pledge on each exam or assignment. If you are ever unclear about acceptable collaboration, ask.</p><p style="margin-top:.75rem"><em>“I pledge on my honor that I have not given or received any unauthorized assistance on this exam/assignment.”</em></p></div>
+    <div class="card table-wrap"><table class="matrix"><thead><tr><th>Assignment</th><th>Open notes</th><th>Use book</th><th>Ask friends</th><th>Search online</th><th>Group work</th><th>Use AI*</th></tr></thead><tbody id="matrix-body"></tbody></table><p class="matrix-note">* AI may be used only where marked, must be disclosed, and remains subject to the specific assignment instructions.</p></div>
+  </section>
+
+  <section class="section" id="resources">
+    <div class="section-label">Resources &amp; accommodations</div>
+    <div class="resource-grid">
+      <article class="resource"><h3>Accessibility &amp; Disability Service</h3><p>For accommodations, call 301-314-7682 or email <a href="mailto:adsfrontdesk@umd.edu">adsfrontdesk@umd.edu</a>. Learn about <a href="https://www.counseling.umd.edu/ads/accommodations/sharingwithinstructors/">sharing accommodations with instructors</a> and <a href="https://www.counseling.umd.edu/ads/notetaking/">note-taking assistance</a>.</p></article>
+      <article class="resource"><h3>Graduate School course policies</h3><p>Students are responsible for reviewing the <a href="https://gradschool.umd.edu/course-related-policies">UMD Graduate School’s course-related policies</a>.</p></article>
+      <article class="resource"><h3>Absence policy</h3><p>Review the <a href="https://president.umd.edu/administration/policies/section-v-student-affairs/v-100g">complete university policy on absences</a>. No late assignments will be accepted in this class.</p></article>
+      <article class="resource"><h3>Course platform</h3><p>Consult Canvas/ELMS for course materials, posted excerpts, assignment details, and current announcements.</p></article>
+    </div>
+    <div class="section-label">Copyright</div><div class="card"><p>Course materials are copyrighted and may not be reproduced for anything other than personal use without written permission.</p></div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="section-label">About the instructors</div>
+    <div class="faculty-grid">
+      <article class="faculty"><h2>Nicole Coomber</h2><p>Nicole completed her PhD in Education Policy and Leadership in 2012 at the University of Maryland. She is a Clinical Professor at the Robert H. Smith School of Business and Assistant Dean for Experiential Learning. She teaches organizational behavior, management consulting, and leadership in undergraduate, MBA, and online MBA programs. Her consulting work includes diversity, inclusion, and HR engagements with Gilbane Associates, ABC Construction, and Sequoia Equities.</p></article>
+      <article class="faculty"><h2>Albert “Ab” Krall ’81</h2><p>Ab earned his undergraduate degree in Information Systems Management from Smith’s predecessor, the College of Business and Management. He spent 27 years with Accenture, working across industries before focusing on telecommunications clients including Verizon, AT&amp;T, Iridium, BellSouth, and Vodafone. After retiring from Accenture, he served as a Managing Director at Deloitte until 2017. He has chaired the Smith School Advisory Board and continues to serve as a board member.</p></article>
+    </div>
+  </section>
+</main>
+<footer>BMGT758Q · Foundations of Consulting · Fall 2026 · University of Maryland</footer>
+<script>
+const navButtons=[...document.querySelectorAll('.nav button')];
+navButtons.forEach(btn=>btn.addEventListener('click',()=>{navButtons.forEach(b=>b.classList.remove('active'));document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));btn.classList.add('active');document.getElementById(btn.dataset.target).classList.add('active');history.replaceState(null,'','#'+btn.dataset.target);window.scrollTo({top:document.querySelector('.hero').offsetHeight-20,behavior:'smooth'});}));
+const sections=['overview','schedule','grading','policies','resources','about'];if(sections.includes(location.hash.slice(1)))document.querySelector(`[data-target="${location.hash.slice(1)}"]`).click();
+
+const schedule=[
+ {phase:'Launch the engagement',sessions:[
+  {date:'Session 1 · Mon, Oct 19',topic:'Class Introduction – EY Live Case',tags:['Avatar & Google Form']},
+  {date:'Session 2 · Wed, Oct 21',topic:'Defining Management Consulting & Understanding the Industry'},
+  {date:'Session 3 · Mon, Oct 26',topic:'Client Q&A',reads:['Read Garrette, Ch. 1, 3–4']},
+  {date:'Session 4 · Wed, Oct 28',topic:'Stating the Problem'},
+  {date:'Session 5 · Mon, Nov 2',topic:'Structuring the Problem',reads:['Read Garrette, Ch. 5–6']},
+  {date:'Session 6 · Wed, Nov 4',topic:'Stating & Structuring Problems: Team Presentation #1',times:['Team 1 · 10:00','Team 2 · 10:15','Team 3 · 10:30','Team 4 · 10:45','Team 5 · 11:00','Team 6 · 11:15'],note:'Your team only needs to attend during its assigned presentation time.',tags:['Team Presentation #1','Peer Evaluation #1']}
+ ]},
+ {phase:'Manage, solve & sell',sessions:[
+  {date:'Session 7 · Mon, Nov 9',topic:'Understanding & Managing the Client',reads:['Read excerpt from The McKinsey Way (Canvas)','Read excerpt from The Trusted Adviser (Canvas)']},
+  {date:'Session 8 · Wed, Nov 11',topic:'Solving the Problem',reads:['Read Garrette, Ch. 7']},
+  {date:'Session 9 · Mon, Nov 16',topic:'Sell the Solution',reads:['Read Garrette, Ch. 10–11','Read excerpt from Minto, The Pyramid Principle (Canvas)']},
+  {date:'Session 10 · Wed, Nov 18',topic:'What’s It Like to Be a Consultant? Panel',note:'Panelists TBD'},
+  {date:'No class · Nov 23 & 25',topic:'Thanksgiving Break'}
+ ]},
+ {phase:'Build & deliver the recommendation',sessions:[
+  {date:'Session 11 · Mon, Nov 30',topic:'Exercise #1 (in class)'},
+  {date:'Session 12 · Wed, Dec 2',topic:'Draft Final Presentations',times:['Team 1 · 10:00','Team 2 · 10:20','Team 3 · 10:40','Team 4 · 11:00','Team 5 · 11:20','Team 6 · 11:40'],note:'Your team only needs to attend during its assigned presentation time.',tags:['Team Presentation #2','Peer Evaluation #2']},
+  {date:'Session 13 · Mon, Dec 7',topic:'Team Working Session',note:'Ab and Nicole will schedule follow-up meetings with teams as needed.'},
+  {date:'Session 14 · Wed, Dec 9',topic:'Final Client Presentations',times:['Team 1 · 9:20','Team 2 · 9:45','Team 3 · 10:10','Team 4 · 10:35','Team 5 · 11:00','Team 6 · 11:25'],note:'Presentations should be about 15 minutes, with 10 minutes for Q&A. Your team only needs to attend during its assigned time.',tags:['Team Presentation #3','Peer Evaluation #3']},
+  {date:'Exam period · Mon, Dec 14',topic:'Exercise #2 (in class)',tags:['Final deliverable: Self-Evaluation','Due date TBD'],exam:true}
+ ]}
+];
+const scheduleList=document.getElementById('schedule-list');schedule.forEach((group,i)=>{const box=document.createElement('div');box.className='accordion'+(i===0?' open':'');box.innerHTML=`<button class="accordion-head" aria-expanded="${i===0}"><span>${group.phase}</span><span class="arrow">▼</span></button><div class="accordion-body"></div>`;const body=box.querySelector('.accordion-body');group.sessions.forEach(s=>{const row=document.createElement('div');row.className='session';let detail=`<div class="topic">${s.topic}</div>`;if(s.reads)detail+=s.reads.map(x=>`<span class="tag read">${x}</span>`).join('');if(s.times)detail+=`<div class="team-times">${s.times.map(x=>`<span>${x}</span>`).join('')}</div>`;if(s.note)detail+=`<div class="session-note"><em>${s.note}</em></div>`;if(s.tags)detail+=s.tags.map(x=>`<span class="tag${s.exam?' exam':''}">${x}</span>`).join('');row.innerHTML=`<div class="date">${s.date}</div><div>${detail}</div>`;body.appendChild(row)});box.querySelector('button').addEventListener('click',()=>{box.classList.toggle('open');box.querySelector('button').setAttribute('aria-expanded',box.classList.contains('open'))});scheduleList.appendChild(box)});
+
+const grades=[['Avatar Assignment',5],['In-Class Participation',5],['Exercise #1',10],['Exercise #2',10],['Self-Evaluation',8],['Team Presentation #1',10],['Team Presentation #2',10],['Team Presentation #3',25],['Midterm Peer Evaluation',5],['Final Peer Evaluation',10]];
+const cutoffs=[['A+',98],['A',93],['A−',90],['B+',88],['B',83],['B−',80],['C+',78],['C',73],['C−',70],['D',60]];
+const gb=document.getElementById('grade-body');grades.forEach((g,i)=>{gb.insertAdjacentHTML('beforeend',`<tr><td>${g[0]}</td><td class="num"><input class="grade-input" id="g${i}" type="number" min="0" max="${g[1]}" step="0.5" aria-label="Points earned for ${g[0]}"></td><td class="num">${g[1]}</td></tr>`)});document.getElementById('cutoffs').innerHTML=cutoffs.map(c=>`<div class="cutoff"><b>${c[0]}</b>${c[1]}+</div>`).join('');
+function letter(p){for(const c of cutoffs)if(p>=c[1])return c[0];return 'F'}function recalc(){let earned=0,possible=0,any=false;grades.forEach((g,i)=>{const el=document.getElementById('g'+i);if(el.value!==''){any=true;let v=Math.max(0,Math.min(g[1],Number(el.value)||0));if(v!=el.value)el.value=v;earned+=v;possible+=g[1]}});document.getElementById('letter').textContent=any?letter(earned/possible*100):'–';document.getElementById('pct').textContent=any?`${earned.toFixed(1)} of ${possible} points entered · ${(earned/possible*100).toFixed(1)}% on graded work`:'Enter grades to calculate your current standing'}grades.forEach((g,i)=>document.getElementById('g'+i).addEventListener('input',recalc));document.getElementById('reset').addEventListener('click',()=>{grades.forEach((g,i)=>document.getElementById('g'+i).value='');recalc()});
+
+const policies=[
+ ['University Class Policies','Students are responsible for knowing their rights and reviewing all course-related policies on the <a href="https://gradschool.umd.edu/course-related-policies">UMD Graduate School course-policies page</a>.'],
+ ['Recording & Online Privacy','<p>Class sessions will be recorded for enrolled students, including those unable to attend live. Students who speak during class consent to having their voices recorded. If you do not consent, discuss this with the faculty immediately.</p><p>You do not have consent to share class recordings, including on social-media platforms.</p>'],
+ ['Technology Policy','Please refrain from technology use unrelated to class. Off-task technology use will result in a 10% deduction in your overall grade.'],
+ ['Absences & Late Work','Review the <a href="https://president.umd.edu/administration/policies/section-v-student-affairs/v-100g">complete university policy on absences</a>. No late assignments will be accepted in this class.'],
+ ['Copyright Notice','Course materials are copyrighted and may not be reproduced for anything other than personal use without written permission.']
+];
+const pl=document.getElementById('policy-list');policies.forEach((p,i)=>{const a=document.createElement('div');a.className='accordion'+(i===0?' open':'');a.innerHTML=`<button class="accordion-head" aria-expanded="${i===0}"><span>${p[0]}</span><span class="arrow">▼</span></button><div class="accordion-body"><div class="card" style="border:0;border-radius:0;margin:0;box-shadow:none">${p[1]}</div></div>`;a.querySelector('button').addEventListener('click',()=>{a.classList.toggle('open');a.querySelector('button').setAttribute('aria-expanded',a.classList.contains('open'))});pl.appendChild(a)});
+const matrix=[['In-Class Participation',[1,1,1,1,1,0]],['Exercise #1',[1,1,0,1,0,0]],['Exercise #2',[1,0,0,0,0,0]],['Self-Evaluation',[1,1,0,1,0,0]],['Team Presentation #1',[1,1,0,1,1,1]],['Team Presentation #2',[1,1,0,1,1,1]],['Team Presentation #3',[1,1,0,1,1,1]],['Midterm Peer Evaluation',[1,0,0,0,0,0]],['Final Peer Evaluation',[1,0,0,0,0,0]]];document.getElementById('matrix-body').innerHTML=matrix.map(r=>`<tr><td>${r[0]}</td>${r[1].map(v=>`<td class="${v?'yes':'no'}">${v?'✓':'—'}</td>`).join('')}</tr>`).join('');
+</script>
+</body>
+</html>
